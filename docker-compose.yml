@@ -1,0 +1,21 @@
+version: "3"
+services:
+  backend:
+    container_name: backend
+    image: megadevboard/backend
+    ports:
+      - 8090:8090
+  frontend:
+    container_name: frontend
+    image: megadevboard/frontend
+    volumes:
+      - "./devBoard-front:/app"
+      - "/app/node_modules"
+    ports:
+      - 3000:3000
+    depends_on:
+      - backend
+networks:
+  default:
+    external:
+      name: devboard-network
