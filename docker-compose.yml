@@ -2,17 +2,21 @@ version: "3"
 services:
   backend:
     container_name: backend
-    image: megadevboard/backend
+    build: 
+      context: .
+      dockerfile: Dockerfile
     ports:
       - 8090:8090
   frontend:
     container_name: frontend
-    image: megadevboard/frontend
+    build:
+      context: ./devBoard-front
+      dockerfile: Dockerfile
     volumes:
       - "./devBoard-front:/app"
       - "/app/node_modules"
     ports:
-      - 3000:3000
+      - "3000:3000"
     depends_on:
       - backend
 networks:
