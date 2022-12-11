@@ -14,8 +14,11 @@ FROM node:17-alpine3.15
 # CMD ["npm", "start"]
 ENV TZ=America/Atikokan
 WORKDIR /app
-COPY package*.json .
+COPY package*.json ./
 RUN npm install
+RUN mkdir node_modules/.cache && chmod -R 777 node_modules/.cache
+
+COPY ./ ./
 RUN npm install -g react-scripts
 
 CMD ["npm", "start"]
