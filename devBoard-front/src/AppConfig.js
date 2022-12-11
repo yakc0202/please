@@ -2,7 +2,7 @@ let backendHost;
 
 const hostname = window && window.location && window.location.hostname;
 
-backendHost = "http://3.18.52.170:8090";
+backendHost = "http://localhost:8090";
 
 
 export const API_BASE_URL = `${backendHost}`;
